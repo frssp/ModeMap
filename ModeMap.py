@@ -160,6 +160,9 @@ for i, mode in enumerate(modes):
 
 args.Mode1, args.Mode2 = modes;
 
+if args.MapMode == '2D' and args.QRange2 == None:
+    args.QRange2 = args.QRange1;
+
 qRanges = [args.QRange1, args.QRange2];
 
 for i, qRange in enumerate(qRanges):
@@ -173,9 +176,6 @@ for i, qRange in enumerate(qRanges):
         qRanges[i] = np.arange(start, stop + step, step);
 
 args.QRange1, args.QRange2 = qRanges;
-
-if args.MapMode == '2D' and args.QRange2 == None:
-    args.QRange2 = args.QRange1;
 
 elements = [int(element) for element in args.ModulationSupercellMatrix.strip().split()];
 
